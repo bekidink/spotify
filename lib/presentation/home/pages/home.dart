@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify/presentation/home/widgets/artist_card.dart';
+import 'package:spotify/presentation/home/widgets/news_songs.dart';
 import 'package:spotify/presentation/home/widgets/tabs.dart';
 
 import '../../../common/widgets/app_bar.dart';
@@ -31,7 +32,18 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         child: Column(
           children: [
             homeArtistCard(),
-            tabs(_tabController,context)
+            tabs(_tabController,context),
+            SizedBox(
+              height: 260,
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+            const    NewsSongs(),
+                Container(),
+                Container(),
+                Container()
+              ]),
+            )
           ],
         ),
       ),
