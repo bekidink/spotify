@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotify/common/helpers/is_dark.dart';
 import 'package:spotify/core/configs/theme/app_colors.dart';
+import 'package:spotify/presentation/song/pages/song_player.dart';
 
 import '../../../domain/entities/song/song.dart';
 
@@ -9,8 +10,12 @@ Widget playListSongs(List<SongEntity> songs,BuildContext context){
   return ListView.separated(
     shrinkWrap: true,
     itemBuilder: (context,index){
-    return Expanded(
-      child: Row(
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> SongPlayerPage(song:songs[index])));
+      },
+      child:
+       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

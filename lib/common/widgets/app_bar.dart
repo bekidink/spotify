@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:spotify/common/helpers/is_dark.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MainAppBar({super.key, this.title, this.hideback=false});
+  const MainAppBar({super.key, this.title, this.hideback=false, this.action});
   final Widget? title;
   final bool hideback;
+  final Widget? action;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -12,6 +13,9 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       centerTitle: true,
       title: title?? Text(''),
+      actions: [
+        action?? Container()
+      ],
       leading:hideback?null: IconButton(onPressed: (){
         Navigator.pop(context);
       }, icon: Container(
