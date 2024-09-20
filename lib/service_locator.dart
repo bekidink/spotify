@@ -8,6 +8,7 @@ import 'package:spotify/domain/usecases/auth/getUser.dart';
 import 'package:spotify/domain/usecases/auth/signup.dart';
 import 'package:spotify/domain/usecases/song/add_or_remove_fav.dart';
 import 'package:spotify/domain/usecases/song/get_news_songs.dart';
+import 'package:spotify/domain/usecases/song/get_user_playlist.dart';
 import 'package:spotify/domain/usecases/song/is_fav_song.dart';
 
 import 'domain/repository/song/song.dart';
@@ -51,5 +52,8 @@ sl.registerSingleton<SongFirebaseService>(
  );
  sl.registerSingleton<GetUseruseCase>(
   GetUseruseCase()
+ );
+ sl.registerSingleton<GetUserPlayListUseCase>(
+  GetUserPlayListUseCase()
  );
 }
