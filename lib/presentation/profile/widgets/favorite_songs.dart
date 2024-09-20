@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spotify/common/bloc/favorite/favorite_cubit.dart';
 import 'package:spotify/presentation/profile/bloc/user_playlist_cubit.dart';
 import 'package:spotify/presentation/profile/bloc/user_playlist_state.dart';
 
+import '../../../common/widgets/favorite_button.dart';
 import '../../../core/configs/constants/app_urls.dart';
 
 Widget favoriteSongs(BuildContext context){
@@ -39,12 +41,13 @@ Widget favoriteSongs(BuildContext context){
                    Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(state.songs[index].title,style: TextStyle(
+                  Text(state.songs[index].title,style:const TextStyle(
                     overflow: TextOverflow.ellipsis,
                     fontWeight: FontWeight.bold,
                     fontSize: 12
                   ),maxLines: 1,),
-                  Text(state.songs[index].artist,style: TextStyle(
+                  Text(state.songs[index].artist,style:const TextStyle(
+              
                     fontWeight: FontWeight.w400,
                     fontSize: 12
                   ),)
@@ -56,8 +59,10 @@ Widget favoriteSongs(BuildContext context){
                  Row(
             children: [
               Text(state.songs[index].duration.toString().replaceAll('.', ":")),
-              SizedBox(width: 10,),
-            //  FavoriteButton(song: songs[index])
+           const   SizedBox(width: 10,),
+             FavoriteButton(song: state.songs[index],function: (){
+              context.read<UserPlayListCubit>().removeSong(index);
+             },)
             ],
           )
               

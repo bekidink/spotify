@@ -8,7 +8,8 @@ import '../bloc/favorite/favorite_state.dart';
 
 class FavoriteButton extends StatelessWidget {
   final SongEntity song;
-  const FavoriteButton({super.key, required this.song});
+  final Function? function;
+  const FavoriteButton({super.key, required this.song, this.function});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +18,11 @@ class FavoriteButton extends StatelessWidget {
       child: BlocBuilder<FavoriteCubit,FavoriteState>(
         builder: (context, state) {
           if(state is FavoriteStateInitial){
-            return IconButton(onPressed: (){
+            return IconButton(onPressed: ()async{
               context.read<FavoriteCubit>().favoriteUpdated(song.songId);
+              if(function!=null){
+                function!();
+              }
             }, icon:
               
                Icon(song.isFavorite?Icons.favorite: Icons.favorite_outline_rounded,color: AppColors.darkGrey,));
