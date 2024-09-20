@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:spotify/common/helpers/is_dark.dart';
+import 'package:spotify/common/widgets/favorite_button.dart';
 import 'package:spotify/core/configs/theme/app_colors.dart';
 import 'package:spotify/presentation/song/pages/song_player.dart';
 
@@ -51,7 +52,7 @@ Widget playListSongs(List<SongEntity> songs,BuildContext context){
             children: [
               Text(songs[index].duration.toString().replaceAll('.', ":")),
               SizedBox(width: 10,),
-              IconButton(onPressed: (){}, icon: Icon(Icons.favorite_rounded))
+             FavoriteButton(song: songs[index])
             ],
           )
         ],

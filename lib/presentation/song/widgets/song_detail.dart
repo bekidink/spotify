@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotify/common/helpers/is_dark.dart';
+import 'package:spotify/common/widgets/favorite_button.dart';
 import 'package:spotify/domain/entities/song/song.dart';
 
 import '../../../core/configs/theme/app_colors.dart';
@@ -28,7 +29,7 @@ Widget songDetail(BuildContext context,SongEntity song){
               )
             ],
           ),
-         IconButton(onPressed: (){}, icon: Icon(Icons.favorite_outline_rounded,size: 35,color: AppColors.darkGrey,))
+         FavoriteButton(song: song)
         ],
       );
 }

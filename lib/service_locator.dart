@@ -4,8 +4,11 @@ import 'package:spotify/data/repository/song/song_repository_impl.dart';
 import 'package:spotify/data/sources/auth/auth_firebase.dart';
 import 'package:spotify/data/sources/song/song.dart';
 import 'package:spotify/domain/repository/auth/auth.dart';
+import 'package:spotify/domain/usecases/auth/getUser.dart';
 import 'package:spotify/domain/usecases/auth/signup.dart';
+import 'package:spotify/domain/usecases/song/add_or_remove_fav.dart';
 import 'package:spotify/domain/usecases/song/get_news_songs.dart';
+import 'package:spotify/domain/usecases/song/is_fav_song.dart';
 
 import 'domain/repository/song/song.dart';
 import 'domain/usecases/auth/signin.dart';
@@ -39,5 +42,14 @@ sl.registerSingleton<SongFirebaseService>(
  );
  sl.registerSingleton<GetPlayListUseCase>(
   GetPlayListUseCase()
+ );
+ sl.registerSingleton<AddOrRemoveFavUseCase>(
+  AddOrRemoveFavUseCase()
+ );
+ sl.registerSingleton<IsFavoriteSongUseCase>(
+  IsFavoriteSongUseCase()
+ );
+ sl.registerSingleton<GetUseruseCase>(
+  GetUseruseCase()
  );
 }

@@ -4,6 +4,7 @@ import 'package:spotify/presentation/home/widgets/artist_card.dart';
 import 'package:spotify/presentation/home/widgets/news_songs.dart';
 import 'package:spotify/presentation/home/widgets/play_list.dart';
 import 'package:spotify/presentation/home/widgets/tabs.dart';
+import 'package:spotify/presentation/profile/pages/profile.dart';
 
 import '../../../common/widgets/app_bar.dart';
 import '../../../core/assets/app_vectors.dart';
@@ -26,6 +27,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainAppBar(
+        action: IconButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const ProfilePage()));
+        }, icon:const Icon(Icons.person)),
         hideback: true,
         title: SvgPicture.asset(AppVectors.log,height: 40,width: 40,),
       ),

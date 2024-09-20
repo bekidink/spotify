@@ -8,3 +8,14 @@ UserEntity({
   this.userId
 });
 }
+
+class GetUserEntity{
+String? imageUrl;
+String? fullName;
+String? email;
+GetUserEntity({
+  this.email,
+  this.fullName,
+  this.imageUrl
+});
+}
